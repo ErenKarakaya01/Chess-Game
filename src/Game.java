@@ -50,6 +50,7 @@ public class Game {
 
                     if (board[i][j].equals("")) {
                         if (background.equals(Preparing.ANSI_BLACK_BACKGROUND))
+                            //This pawn symbol is here just to collimate the board
                             System.out.print(" " + background + Preparing.ANSI_BLACK + "♟" + Preparing.ANSI_RESET + " |");
                         else
                             System.out.print(" " + background + Preparing.ANSI_WHITE + "♟" + Preparing.ANSI_RESET + " |");
