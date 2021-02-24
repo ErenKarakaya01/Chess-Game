@@ -39,7 +39,7 @@ public class Game {
     //SHOWING BOARD
     public static void showBoard(String[][] board, String myTeam) {
         if (myTeam.equals(Preparing.ANSI_RED)) {
-            System.out.println("   |  A |  B |  C |  D |  E |  F |  G |  H |");
+            System.out.println("   |  A |  B |  C |  D | E |  F |  G |  H |");
 
             String background = Preparing.ANSI_WHITE_BACKGROUND;
 
@@ -47,13 +47,16 @@ public class Game {
                 System.out.print(" " + (8-i) + " |");
 
                 for (int j=0; j<8; j++) {
-                    String temp;
-                    if (board[i][j].equals(""))
-                        temp = "  ";
-                    else
-                        temp = "";
 
-                    System.out.print(" " + background + board[i][j] + temp + Preparing.ANSI_RESET + " |");
+                    if (board[i][j].equals("")) {
+                        if (background.equals(Preparing.ANSI_BLACK_BACKGROUND))
+                            System.out.print(" " + background + Preparing.ANSI_BLACK + "♟" + Preparing.ANSI_RESET + " |");
+                        else
+                            System.out.print(" " + background + Preparing.ANSI_WHITE + "♟" + Preparing.ANSI_RESET + " |");
+                    }
+
+                    else
+                        System.out.print(" " + background + board[i][j] + Preparing.ANSI_RESET + " |");
 
                     if (background.equals(Preparing.ANSI_WHITE_BACKGROUND))
                         background = Preparing.ANSI_BLACK_BACKGROUND;
@@ -70,7 +73,7 @@ public class Game {
         }
 
         else {
-            System.out.println("   |  H |  G |  F |  E |  D |  C |  B |  A |");
+            System.out.println("   |  H |  G |  F |  E | D |  C |  B |  A |");
 
             String background = Preparing.ANSI_WHITE_BACKGROUND;
 
@@ -78,13 +81,16 @@ public class Game {
                 System.out.print(" " + (8-i) + " |");
 
                 for (int j=7; j>=0; j--) {
-                    String temp;
-                    if (board[i][j].equals(""))
-                        temp = "  ";
-                    else
-                        temp = "";
 
-                    System.out.print(" " + background + board[i][j] + temp + Preparing.ANSI_RESET +" |");
+                    if (board[i][j].equals("")) {
+                        if (background.equals(Preparing.ANSI_BLACK_BACKGROUND))
+                            System.out.print(" " + background + Preparing.ANSI_BLACK + "♟" + Preparing.ANSI_RESET + " |");
+                        else
+                            System.out.print(" " + background + Preparing.ANSI_WHITE + "♟" + Preparing.ANSI_RESET + " |");
+                    }
+
+                    else
+                        System.out.print(" " + background + board[i][j] + Preparing.ANSI_RESET + " |");
 
                     if (background.equals(Preparing.ANSI_WHITE_BACKGROUND))
                         background = Preparing.ANSI_BLACK_BACKGROUND;
@@ -104,7 +110,7 @@ public class Game {
     //SHOWING BOARD WITH POTENTIAL MOVE(S)
     public static void showBoardWithMoves(String[][] board, String myTeam, ArrayList<ArrayList<Integer>> options) {
         if (myTeam.equals(Preparing.ANSI_RED)) {
-            System.out.println("   |  A |  B |  C |  D |  E |  F |  G |  H |");
+            System.out.println("   |  A |  B |  C |  D | E |  F |  G |  H |");
 
             String background = Preparing.ANSI_WHITE_BACKGROUND;
 
@@ -112,16 +118,21 @@ public class Game {
                 System.out.print(" " + (8-i) + " |");
 
                 for (int j=0; j<8; j++) {
-                    String temp;
-                    if (board[i][j].equals(""))
-                        temp = "  ";
-                    else
-                        temp = "";
 
-                    if (options.contains(new ArrayList<Integer>(Arrays.asList(j, i))))
-                        System.out.print(" " + Preparing.ANSI_GREEN_BACKGROUND + board[i][j] + temp + Preparing.ANSI_RESET +" |");
-                    else
-                        System.out.print(" " + background + board[i][j] + temp + Preparing.ANSI_RESET +" |");
+                    if (board[i][j].equals("")) {
+                        if (options.contains(new ArrayList<Integer>(Arrays.asList(j, i))))
+                            System.out.print(" " + Preparing.ANSI_GREEN_BACKGROUND + Preparing.ANSI_GREEN + "♟" + Preparing.ANSI_RESET + " |");
+                        else if (background.equals(Preparing.ANSI_BLACK_BACKGROUND))
+                            System.out.print(" " + background + Preparing.ANSI_BLACK + "♟" + Preparing.ANSI_RESET + " |");
+                        else
+                            System.out.print(" " + background + Preparing.ANSI_WHITE + "♟" + Preparing.ANSI_RESET + " |");
+                    }
+                    else {
+                        if (options.contains(new ArrayList<Integer>(Arrays.asList(j, i))))
+                            System.out.print(" " + Preparing.ANSI_GREEN_BACKGROUND + board[i][j] + Preparing.ANSI_RESET + " |");
+                        else
+                            System.out.print(" " + background + board[i][j] + Preparing.ANSI_RESET + " |");
+                    }
 
                     if (background.equals(Preparing.ANSI_WHITE_BACKGROUND))
                         background = Preparing.ANSI_BLACK_BACKGROUND;
@@ -138,7 +149,7 @@ public class Game {
         }
 
         else {
-            System.out.println("   |  H |  G |  F |  E |  D |  C |  B |  A |");
+            System.out.println("   |  H |  G |  F |  E | D |  C |  B |  A |");
 
             String background = Preparing.ANSI_WHITE_BACKGROUND;
 
@@ -146,16 +157,21 @@ public class Game {
                 System.out.print(" " + (8-i) + " |");
 
                 for (int j=7; j>=0; j--) {
-                    String temp;
-                    if (board[i][j].equals(""))
-                        temp = "  ";
-                    else
-                        temp = "";
 
-                    if (options.contains(new ArrayList<Integer>(Arrays.asList(j, i))))
-                        System.out.print(" " + Preparing.ANSI_GREEN_BACKGROUND + board[i][j] + temp + Preparing.ANSI_RESET +" |");
-                    else
-                        System.out.print(" " + background + board[i][j] + temp + Preparing.ANSI_RESET +" |");
+                    if (board[i][j].equals("")) {
+                        if (options.contains(new ArrayList<Integer>(Arrays.asList(j, i))))
+                            System.out.print(" " + Preparing.ANSI_GREEN_BACKGROUND + Preparing.ANSI_GREEN + "♟" + Preparing.ANSI_RESET + " |");
+                        else if (background.equals(Preparing.ANSI_BLACK_BACKGROUND))
+                            System.out.print(" " + background + Preparing.ANSI_BLACK + "♟" + Preparing.ANSI_RESET + " |");
+                        else
+                            System.out.print(" " + background + Preparing.ANSI_WHITE + "♟" + Preparing.ANSI_RESET + " |");
+                    }
+                    else {
+                        if (options.contains(new ArrayList<Integer>(Arrays.asList(j, i))))
+                            System.out.print(" " + Preparing.ANSI_GREEN_BACKGROUND + board[i][j] + Preparing.ANSI_RESET + " |");
+                        else
+                            System.out.print(" " + background + board[i][j] + Preparing.ANSI_RESET + " |");
+                    }
 
                     if (background.equals(Preparing.ANSI_WHITE_BACKGROUND))
                         background = Preparing.ANSI_BLACK_BACKGROUND;
