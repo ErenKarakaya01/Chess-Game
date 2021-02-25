@@ -212,7 +212,7 @@ public class Game {
 
         System.out.print("Killed pieces of Red: - ");
         for (int i=0; i<killedPiecesOfRed.size(); i++)
-            System.out.print("\n" + killedPiecesOfRed.get(i) + " - \n");
+            System.out.print(killedPiecesOfRed.get(i) + " - ");
         System.out.println();
     }
 
